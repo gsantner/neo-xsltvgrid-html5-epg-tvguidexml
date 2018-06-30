@@ -300,6 +300,33 @@
 						<xsl:text>')</xsl:text>						
 					</xsl:attribute>
 				</xsl:when>
+				<xsl:when test="$OnClick='DuckDuckGo'">
+					<xsl:attribute name="onclick">
+						<xsl:text>window.open('https://duckduckgo.com/?kae=c&amp;kad=de_DE&amp;k1=-1&amp;kaj=m&amp;kv=l&amp;kp=-1&amp;q=</xsl:text>
+							<xsl:call-template name="replace">
+								<xsl:with-param name="string">
+								<xsl:call-template name="replace">
+									<xsl:with-param name="string">
+										<xsl:call-template name="replace">
+											<xsl:with-param name="string">
+												<xsl:call-template name="fixquotes">
+												<xsl:with-param name="string" select="translate(title,' ','+')" />
+												</xsl:call-template>
+											</xsl:with-param>
+											<xsl:with-param name="pattern" select="'&amp;'"/>
+											<xsl:with-param name="replacement" select="'%26'"/>
+										</xsl:call-template>
+									</xsl:with-param>
+									<xsl:with-param name="pattern" select="'='"/>
+									<xsl:with-param name="replacement" select="'%3d'"/>
+									</xsl:call-template>
+								</xsl:with-param>
+								<xsl:with-param name="pattern" select="'?'"/>
+								<xsl:with-param name="replacement" select="'%3f'"/>
+							</xsl:call-template>
+						<xsl:text>')</xsl:text>						
+					</xsl:attribute>
+				</xsl:when>
 				<xsl:when test="$OnClick='URL'">
 					<xsl:if test="url">
 						<xsl:attribute name="onclick">

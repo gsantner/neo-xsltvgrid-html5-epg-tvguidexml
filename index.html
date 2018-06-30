@@ -139,7 +139,7 @@ cookie = readCookie("xsltvdayfirst"); var dayfirst = cookie ? cookie : true;//fa
 cookie = readCookie("xsltvcategorycolors"); var categorycolors = cookie ? cookie : true;
 cookie = readCookie("xsltvdailyfiles"); var dailyfiles = cookie ? cookie : false;
 cookie = readCookie("xsltvtwelvehour"); var twelvehour = cookie ? cookie : false;
-cookie = readCookie("xsltvloadonclick"); var loadonclick = cookie ? cookie : 'IMDB';
+cookie = readCookie("xsltvloadonclick"); var loadonclick = cookie ? cookie : 'DuckDuckGo';
 cookie = readCookie("xsltvlanguage"); var language = cookie ? cookie : 'english';
 cookie = readCookie("xsltvhighlightclickable"); var highlightclickable = cookie ? cookie : false;
 cookie = readCookie("xsltvhighlightmovies"); var highlightmovies = cookie ? Number(cookie) : 10;
@@ -147,7 +147,7 @@ cookie = readCookie("xsltvhighlightnew"); var highlightnew = cookie ? cookie : f
 cookie = readCookie("xsltvprintdates"); var printdates = cookie ? cookie : true;
 cookie = readCookie("xsltvtimebarfrequency"); var timebarfrequency = cookie ? cookie : 12;//-1;
 cookie = readCookie("xsltvshowclock"); var showclock = cookie ? cookie : false;//true;
-cookie = readCookie("xsltvshowbarclock"); var showbarclock = cookie ? cookie : false;
+cookie = readCookie("xsltvshowbarclock"); var showbarclock = cookie ? cookie : true; //false;
 
 var languagefile = 'lang/'+language+'.js'
 document.write('<script type="text/javascript" src="'+languagefile+'"><\/script>') 
@@ -617,7 +617,7 @@ function Init(dl,ch,cd,cm,cy,offset) {
 	<label for="grabber"><script type="text/javascript">document.write(grabberlabel)</script></label><select id="grabber" name="grabber" onchange="var v=this.options[this.selectedIndex].value; createCookie('xsltvgrabber',v,365);if(v=='tv_grab_na_dd'){document.getElementById('dayfirst').checked=false; createCookie('xsltvdayfirst',false,365);}else if(v=='tv_grab_es' || v=='tv_grab_fr' || v=='tv_grab_se' || v=='tv_grab_de'){document.getElementById('dayfirst').checked=true; createCookie('xsltvdayfirst',true,365);}"><option value="tv_grab_de">de</option><option value="tv_grab_es">es</option><option value="tv_grab_fr">fr</option><option value="tv_grab_huro">huro</option><option value="tv_grab_na_dd">na_dd</option><option value="tv_grab_se">se</option></select><a href="#" class="hintanchor" onMouseover="showhint(grabberhint, this, event)">[?]</a><br/> 
 	</div>
 	<div id="otheroptionsfieldset">
-	<label for="loadonclick"><script type="text/javascript">document.write(loadonclicklabel)</script></label><select id="loadonclick" name="loadonclick" onchange="var v=this.options[this.selectedIndex].value; createCookie('xsltvloadonclick',v,365);"><option value="nothing"><script type="text/javascript">document.write(loadonclicknothing)</script></option><option value="IMDB"><script type="text/javascript">document.write(loadonclickIMDB)</script></option><option value="URL"><script type="text/javascript">document.write(loadonclickURL)</script></option></select><br/>
+	<label for="loadonclick"><script type="text/javascript">document.write(loadonclicklabel)</script></label><select id="loadonclick" name="loadonclick" onchange="var v=this.options[this.selectedIndex].value; createCookie('xsltvloadonclick',v,365);"><option value="nothing"><script type="text/javascript">document.write(loadonclicknothing)</script></option><option value="IMDB"><script type="text/javascript">document.write(loadonclickIMDB)</script></option><option value="DuckDuckGo">DuckDuckGo</option><option value="URL"><script type="text/javascript">document.write(loadonclickURL)</script></option></select><br/>
 	<label for="highlightclickable"><script type="text/javascript">document.write(highlightclickablelabel)</script></label><input id="highlightclickable" name="highlightclickable" type="checkbox"  onclick="var v=this.checked; createCookie('xsltvhighlightclickable',v,365);"/><a href="#" class="hintanchor" onMouseover="showhint(highlightclickablehint, this, event)">[?]</a><br/>
 	<label for="highlightmovies"><script type="text/javascript">document.write(highlightmovieslabel)</script></label>
 		<select id="highlightmovies" name="highlightmovies" onchange="var v=this.options[this.selectedIndex].value; createCookie('xsltvhighlightmovies',v,365);">
