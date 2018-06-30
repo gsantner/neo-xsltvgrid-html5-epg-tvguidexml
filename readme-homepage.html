@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><link type="text/css" id="dark-mode" rel="stylesheet" href=""><style type="text/css" id="dark-mode-custom-style"></style><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>XSLTv - An XSL-based client side TV grid viewing application</title>
+</head>
+<body>
+<h1>XSLTv</h1>
+<h2>Summary:</h2>
+<p>
+XSLTv is a grid viewing program for XMLTV data files. It requires only 
+an xmltv data file and a modern browser. All processing is completely 
+client-side and is done as-needed, resulting in a very simple 
+installation.
+</p>
+<h2>Download:</h2>
+<ul>
+<li><a href="http://ericandchar.com/xsltvgrid/downloads/xsltv.zip">xsltv.zip version 1.31</a> - Compressed .zip file (161k)</li>
+</ul>
+<p>
+<a href="http://ericandchar.com/xsltvgrid/changelog.txt">See Changes</a>
+<a href="http://ericandchar.com/xsltvgrid/downloads/">Old Versions</a>
+</p>
+<p>Notice: If you see weirdness, first try sorting your xml data with <code>tv_sort --by-channel</code>,
+ which adds end-times if they're missing and makes sure there is no 
+overlap of programs.  Listings in some countries have "gaps," e.g. 
+program one 1:00-1:45, program two 2:00-2:30. If you have this you 
+should click the "fix gaps" option in XSLTv. (Checking this option if 
+you <i>don't</i> need it slows processing down.)</p>
+<p>Update: XSLTv is an officially approved <a href="http://www.schedulesdirect.org/">Schedules Direct</a>
+ application, so you can use this non-profit grabber to feed XSLTv. (The
+ previous North-American grabber which used labs.zap2it.com has been 
+discontinued.)
+</p><h2>Features:</h2>
+<ul>
+<li>No complex installation - it could run off of your windows desktop. (In some browsers--see below)</li>
+<li>Everything controlled by stylesheets - css files mimicking seven common web-based tv listings grids are included.</li>
+<li>Configurable DHTML popups show more information about shows (e.g. description, rating, original airdate or release year)</li>
+<li>Supports xmltv channel icons.</li>
+<li>Clicking on a program optionally searches IMDB for the title, or uses a url encoded in the xml file</li>
+<li>Supports dynamic loading of daily xml files, instead of a single master file.</li>
+<li>Preferences allow changing grid width and number of columns.</li>
+<li>Will automatically refresh hourly to keep a current grid showing at all times.
+</li><li>Tested to work in new versions of both Mozilla Firefox, Internet Explorer, Chrome and Chromium.</li>
+<li>On Android, mouseover won't work, but the grid loads (from a 
+webserver) in Firefox Beta, Dolphin, Opera Mobile, and Chrome. That's 
+every browser I checked, but it may work on others. (I don't have an 
+iDevice.)</li>
+<li>Works for North American, French, Spanish, Swedish, and German listings.</li>
+<li>German, English, Spanish (by Raul), French, Italian, Dutch, Portuguese, Swedish, and Czech translations included.</li>
+<li><b>This software is <a href="http://www.gnu.org/philosophy/free-sw.html">free</a>.</b> (The data usually have non-free licenses).</li>
+</ul>
+<h2>Installation:</h2>
+<ol>
+<li><a href="http://wiki.xmltv.org/index.php/XMLTVProject">Get XMLTV installed and working.</a> (This is easy, especially in Windows!)</li>
+<li>Drop all the files into a directory on your webserver. <b>Note:</b> 
+This software does not require a webserver; it works perfectly (in some 
+browsers--see below) from a directory on a windows machine.</li>
+<li>Put a current xmltv file (which <i>must</i> be either titled <code>tv.xml</code>, or with today's date <code>YYYYMMDD.xml</code>) in the same directory. You could use a series of cron jobs to automate this. <b>Note:</b>
+ The smaller the xml file available to the program, the quicker this 
+will run. Sorting seems to help with speed, but is not required.</li>
+<li>Load <code>tv.html</code> in a webbrowser. <b>Note:</b> This file (and only this file) may be freely renamed (e.g. to <code>index.html</code>).</li>
+</ol>
+<ul>
+<li>Optionally, put your icons directory (which should be called "icons"
+ and should contain the images referenced in the xml tree) in the web 
+tree. In North America, obtain icons with <code>tv_grab_na_icons</code>; subsequent <code>tv_grab_na_dd</code> calls will add the necessary references to your xml file. <b>Note:</b> Where I live, several icons are .gif files with a .jpg extension. <i>Don't correct them.</i> The links in the xml are to the .jpg extension, and the browser will display it anyhow.</li>
+</ul>
+<h2>Support/Comments</h2>
+<ul>
+<li>Email me. I'm eric, at this domain name.</li>
+</ul>
+<h2>Problems:</h2>
+<ul>
+<li>It's slow. A seven-day file can take forever. Download or split into
+ one- or two-day files to speed things up. Clicking the earlier/later 
+links makes a browser appear to freeze for a moment.</li>
+<li>It doesn't know anything about time zones. Put a time zone correction in your tv_grab_XX.conf file.</li>
+<li>Most translations are <i>bad</i>. Please email me if you can help.</li>
+<li>A bug in tv_split means that you can't exactly make "daily" xml 
+files that divide at midnight. Where I live, they divide at 8:00 PM.</li>
+<li>Not all browsers support loading xml from a local (file://) file. 
+This isn't a problem on a webserver, but may be a problem when running 
+"from the desktop" as advertised above.
+	<ul>
+		<li>Firefox- works.</li>
+		<li>Opera- works if setting is changed. go to <a href="opera:config">opera:config</a>, search for "xmlhttp" and check the box for "Allow File XMLHttpRequest". THIS IS A SECURITY RISK.</li>
+		<li>Chromium- works if executable is loaded with 
+"--disable-web-security" command-line switch. THIS IS A SECURITY RISK 
+but you could set up a shortcut just for XSLTv.</li>
+		<li>Internet Explorer- works; you'll have to click "allow blocked content."</li>
+		<li>Safari- untested but should work</li>
+		<li>(Konqueror is not supported by XSLTv)
+		</li></ul>
+</li>
+</ul>
+<h2>Similar Projects</h2>
+<ul>
+<li><a href="http://elina.htlw16.ac.at/~hoerandl/xmltv.html">XMLTV-to-HTML converter, by August Hörandl.</a> This is a perl script to be run server-side. (XSLTv doesn't require perl)</li>
+<li><a href="http://xmltv2html.rubyforge.org/">xmltv2html  is a Ruby script that transforms XMLTV into HTML</a>
+ Requires Ruby, generates a grid for all dates and times in the xml 
+file. (XSLTv displays a configurable "window" of current shows.) I got 
+the idea for DHTML popups from this project.</li>
+<li><a href="http://tobyinkster.co.uk/tv2html">tv2html  converts an XMLTV file into an HTML TV guide.</a> This perl script generates a UK-style grid, with channels across the top and times on the side.</li>
+<li><a href="http://fastcat.org/software/xmltvdb/">XMLTVdb</a> is one of
+ the best looking grids I've seen; it loads your tv data into a 
+postgresql database, then renders html with perl, modperl, and several 
+modules. I never got this working.</li>
+<li><a href="http://www25.brinkster.com/lakeuk/xmltv/xmltv.htm">XML-XSL TV Guide by Dave Whitehead</a>.
+ Has many of the same features as mine, plus support for "favorite 
+programs. Hasn't been updated in a while, but a new version is promised 
+soon.</li>
+</ul>
+<h2>Credits</h2>
+<ul>
+<li><a href="http://www.dynamicdrive.com/">DynamicDrive</a> provided the Show Hint script used in the preferences screen.</li>
+<li><a href="http://www.shiningstar.net/">http://www.shiningstar.net</a> provided the routine which checks that input is numeric.</li>
+<li><a href="http://boxover.swazz.org/">BoxOver</a> is the script used to provide the popups descriptions.</li>
+<li><a href="http://simplythebest.net/scripts/">SimplyTheBest.net</a> provided the script for the real-time clock.</li>
+<li><a href="http://devcorner.georgievi.net/articles/javascript/javascriptshowhide/">Ivan Georgiev</a> wrote the routine which shows and hides divs.</li>
+<li><a href="http://fastdatepicker.sourceforge.net/">FastDatePicker</a> is the script used for the popup calendar.</li>
+<li>The code to find the icon filename came from <a href="http://www.maya.com/local/doc/xslt/FAQ/html_format/xsl/sect2/N7240.html">here</a>.</li>
+<li>The code to escape urls properly came from <a href="http://www.biglist.com/lists/xsl-list/archives/200211/msg00335.html">here</a>.</li>
+<li>The for-loop which is used for star-ratings and other things is from <a href="http://www.bigbold.com/snippets/tag/hello">here</a>.</li>
+</ul>
+<p style="text-align:center"><a href="http://www.ericandchar.com/">Copyright (c) 2006-2013 Eric Lofgren</a></p><a href="http://www.ericandchar.com/">
+
+
+</a></body></html>
