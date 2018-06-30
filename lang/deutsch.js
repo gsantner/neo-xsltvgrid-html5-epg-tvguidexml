@@ -3,8 +3,8 @@ var errortext =					'Fehler';
 var filetext =					'Akte';  
 var notfoundtext =				'finden Sie nicht';  
   
-var preferenceslink =			'Vorlieben';  
-var datepickerbutton =			'Gehen Sie!';  
+var preferenceslink =			'Einstellungen';  
+var datepickerbutton =			'laden';  
 var earliertext =				'Fr\u00fcher';  
 var latertext =					'Sp\u00e4ter';  
   

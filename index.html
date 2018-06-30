@@ -5,9 +5,9 @@
 <head>
 <title>TV Listings</title>
 <!--XSLTv is Copyright 2008 Eric Lofgren. See http://www.ericandchar.com/xsltvgrid/ -->
-<link rel="stylesheet" type="text/css" href="stylesheets/yahooold.tv.css" title="YahooOld" />
-<link rel="stylesheet" type="text/css" href="stylesheets/yahoonew.tv.css" title="YahooNew" />
-<link rel="alternate stylesheet" type="text/css" href="stylesheets/tvguideold.tv.css" title="TVGuideOld" />
+<link rel="stylesheet" type="text/css" href="stylesheets/tvguideold.tv.css" title="TVGuideOld" />
+<link rel="alternate stylesheet" type="text/css" href="stylesheets/yahooold.tv.css" title="YahooOld" />
+<link rel="alternate stylesheet" type="text/css" href="stylesheets/yahoonew.tv.css" title="YahooNew" />
 <link rel="alternate stylesheet" type="text/css" href="stylesheets/tvguideprint.tv.css" title="TVGuidePrint" />
 <link rel="alternate stylesheet" type="text/css" href="stylesheets/tvguidenew.tv.css" title="TVGuideNew" />
 <link rel="alternate stylesheet" type="text/css" href="stylesheets/excite.tv.css" title="Excite" />
@@ -117,9 +117,9 @@ var xmlfileloaded;
 </script>
 <script type='text/javascript' src='tv.js'></script>
 <script type="text/javascript">
-var cookie = readCookie("xsltvhours"); var hours = cookie ? Number(cookie) : 4;
-cookie = readCookie("xsltvtablewidth"); var tablewidth = cookie ? Number(cookie) : (200+(hours * 150));
-cookie = readCookie("xsltvautosize"); var autosize = cookie ? cookie : true;
+var cookie = readCookie("xsltvhours"); var hours = cookie ? Number(cookie) : 6;//4;
+cookie = readCookie("xsltvtablewidth"); var tablewidth = cookie ? Number(cookie) : 950;//(200+(hours * 150));
+cookie = readCookie("xsltvautosize"); var autosize = cookie ? cookie : false;//true;
 cookie = readCookie("xsltvfixgaps"); var fixgaps = cookie ? cookie : false;
 cookie = readCookie("xsltvchannelpopups"); var channelpopups = cookie ? cookie : true;
 cookie = readCookie("xsltvdescriptionpopups"); var descriptionpopups = cookie ? cookie : true;
@@ -128,14 +128,14 @@ cookie = readCookie("xsltvpopuptimes"); var popuptimes = cookie ? cookie : true;
 cookie = readCookie("xsltvpopuprating"); var popuprating = cookie ? cookie : true;
 cookie = readCookie("xsltvpopupsubtitle"); var popupsubtitle = cookie ? cookie : true;
 cookie = readCookie("xsltvpopupdescription"); var popupdescription = cookie ? cookie : true;
-cookie = readCookie("xsltvpopupdate"); var popupdate = cookie ? cookie : true;
+cookie = readCookie("xsltvpopupdate"); var popupdate = cookie ? cookie : false;//true;
 cookie = readCookie("xsltvpopupcategories"); var popupcategories = cookie ? cookie : true;
 cookie = readCookie("xsltvpopupstarrating"); var popupstarrating = cookie ? cookie : true;
 cookie = readCookie("xsltvabsoluteicons"); var absoluteicons = cookie ? cookie : false;
 cookie = readCookie("xsltvoffsetminutes"); var offsetminutes = cookie ? Number(cookie) : 60;
-cookie = readCookie("xsltvrefreshonthe"); var refreshonthe = cookie ? Number(cookie) : -1;
-cookie = readCookie("xsltvgrabber"); var grabber = cookie ? cookie : "tv_grab_na_dd";
-cookie = readCookie("xsltvdayfirst"); var dayfirst = cookie ? cookie : false;
+cookie = readCookie("xsltvrefreshonthe"); var refreshonthe = cookie ? Number(cookie) : 2;//-1;
+cookie = readCookie("xsltvgrabber"); var grabber = cookie ? cookie : "tv_grab_de";//"tv_grab_na_dd";
+cookie = readCookie("xsltvdayfirst"); var dayfirst = cookie ? cookie : true;//false;
 cookie = readCookie("xsltvcategorycolors"); var categorycolors = cookie ? cookie : true;
 cookie = readCookie("xsltvdailyfiles"); var dailyfiles = cookie ? cookie : false;
 cookie = readCookie("xsltvtwelvehour"); var twelvehour = cookie ? cookie : false;
@@ -145,8 +145,8 @@ cookie = readCookie("xsltvhighlightclickable"); var highlightclickable = cookie 
 cookie = readCookie("xsltvhighlightmovies"); var highlightmovies = cookie ? Number(cookie) : 10;
 cookie = readCookie("xsltvhighlightnew"); var highlightnew = cookie ? cookie : false;
 cookie = readCookie("xsltvprintdates"); var printdates = cookie ? cookie : true;
-cookie = readCookie("xsltvtimebarfrequency"); var timebarfrequency = cookie ? cookie : -1;
-cookie = readCookie("xsltvshowclock"); var showclock = cookie ? cookie : true;
+cookie = readCookie("xsltvtimebarfrequency"); var timebarfrequency = cookie ? cookie : 12;//-1;
+cookie = readCookie("xsltvshowclock"); var showclock = cookie ? cookie : false;//true;
 cookie = readCookie("xsltvshowbarclock"); var showbarclock = cookie ? cookie : false;
 
 var languagefile = 'lang/'+language+'.js'
@@ -177,8 +177,10 @@ if(grabber=="tv_grab_fr"){
 
 
 if (document.implementation && document.implementation.createDocument) { //Netscape only
-	document.getElementById('topstyle').sheet.insertRule("#listings { width: "+ tablewidth +"px }", document.getElementById('topstyle').sheet.cssRules.length )
-	document.getElementById('topstyle').sheet.insertRule("#gridtime { width: "+ tablewidth +"px }", document.getElementById('topstyle').sheet.cssRules.length )
+	//document.getElementById('topstyle').sheet.insertRule("#listings { width: "+ tablewidth +"px }", document.getElementById('topstyle').sheet.cssRules.length )
+	//document.getElementById('topstyle').sheet.insertRule("#gridtime { width: "+ tablewidth +"px }", document.getElementById('topstyle').sheet.cssRules.length )
+	document.getElementById('topstyle').sheet.insertRule("#listings { width: 100%; }", document.getElementById('topstyle').sheet.cssRules.length )
+	document.getElementById('topstyle').sheet.insertRule("#gridtime { width: 100%; }", document.getElementById('topstyle').sheet.cssRules.length )
 }else{
 	document.styleSheets['topstyle'].addRule ("#listings", "width:"+ tablewidth +"px");
 	document.styleSheets['topstyle'].addRule ("#gridtime", "width:"+ tablewidth +"px");
@@ -521,6 +523,7 @@ function Init(dl,ch,cd,cm,cy,offset) {
 	document.getElementById('day').options[document.getElementById('day').selectedIndex].value,
 	Number(document.getElementById('month').options[document.getElementById('month').selectedIndex].value)+1,
 	document.getElementById('year').options[document.getElementById('year').selectedIndex].value);"><script type="text/javascript">document.write(datepickerbutton)</script></button>
+<button id="preflink" style="position:relative;top:-2px;padding:5.5px;color:black;height:auto;bottom=0;margin-left:8px;margin-right:20px;background-color:#F0F0F0;border:0;" onclick="moveObject('menu', event);moveObject('prefiframe',event);document.getElementById('prefiframe').style.width=document.getElementById('menu').offsetWidth;document.getElementById('prefiframe').style.height=document.getElementById('menu').offsetHeight;"><script type="text/javascript">document.write(preferenceslink)</script></button>
 </div>
 <div style="float:right;">
 	<span id="barclock"></span>
@@ -536,7 +539,7 @@ function Init(dl,ch,cd,cm,cy,offset) {
 			</option>
 			<option value="MSN">
 				MSN
-			</option>
+			</option>left
 			<option value="Newspaper">
 				Newspaper
 			</option>
@@ -547,7 +550,7 @@ function Init(dl,ch,cd,cm,cy,offset) {
 				TV Guide (New)
 			</option>
 			<option value="TVGuideOld">
-				TV Guide (Old)
+				TV Guide (Blue)
 			</option>
 			<option value="TVGuidePrint">
 				TV Guide (Print)
@@ -567,9 +570,6 @@ function Init(dl,ch,cd,cm,cy,offset) {
 	<div id="loading"><script type="text/javascript">document.write(loadingtext+"...");</script></div>
 </div>
 <div id="clock"></div>
-<div id="preflink">
-<a href="#" onclick="moveObject('menu', event);moveObject('prefiframe',event);document.getElementById('prefiframe').style.width=document.getElementById('menu').offsetWidth;document.getElementById('prefiframe').style.height=document.getElementById('menu').offsetHeight;"><script type="text/javascript">document.write(preferenceslink)</script></a>
-</div>
 <iframe src="javascript:;" scrolling="no" frameborder="0" id="prefiframe" style="display:none;position:absolute;"></iframe>
 <div id="menu">
 	<ul id="preftabs">

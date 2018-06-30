@@ -173,7 +173,7 @@
 								<xsl:value-of select="icon/@src"/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:value-of select="concat('icons/',$iconname)"/>
+								<xsl:value-of select="concat('Senderlogos/',$iconname)"/>
 							</xsl:otherwise>
 						</xsl:choose>
 						<xsl:text>" alt="" class="popupimage"/></xsl:text>
@@ -192,7 +192,7 @@
 								<xsl:value-of select="icon/@src"/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:value-of select="concat('icons/',$iconname)"/>
+								<xsl:value-of select="concat('Senderlogos/',$iconname)"/>
 							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:attribute><xsl:attribute name="class">channelimage</xsl:attribute></img></xsl:if></td><td class="leftnumbercell"><xsl:value-of select="$channelnumber"/></td><td class="middlecell"><span class="leftnumber"><xsl:value-of select="$channelnumber"/></span><br class="leftchannelbr" /><span class="leftnbsp">&#160;</span><span class="channelname"><xsl:value-of select="$channelshortname"/></span><br class="rightchannelbr" /><span class="rightnbsp">&#160;</span><span class="rightnumber"><xsl:value-of select="$channelnumber"/></span></td><td class="rightnumbercell"><xsl:value-of select="$channelnumber"/></td><td class="rightlogocell"><xsl:if test="string-length($iconname) &gt; 0"><img><xsl:attribute name="src">						<xsl:choose>
@@ -200,7 +200,7 @@
 								<xsl:value-of select="icon/@src"/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:value-of select="concat('icons/',$iconname)"/>
+								<xsl:value-of select="concat('Senderlogos/',$iconname)"/>
 							</xsl:otherwise>
 						</xsl:choose>
 </xsl:attribute><xsl:attribute name="class">channelimage</xsl:attribute></img></xsl:if></td></tr></table>
@@ -361,13 +361,24 @@
 							<xsl:if test="$PopupTimes or ($PopupRating and rating) or ($PopupSubtitle and sub-title) or ($PopupDescription and desc) or ($PopupDate and date) or ($PopupCategories and category) or ($PopupStarRating and star-rating)">
 							<xsl:if test="$PopupTimes">
 								&lt;span class="popuptimes"&gt;
-								<xsl:value-of select="number(substring(@start,9,2))"/>:<xsl:value-of select="substring(@start,11,2)"/>-<xsl:choose><xsl:when test="@stop"><xsl:value-of select="number(substring(@stop,9,2))"/>:<xsl:value-of select="substring(@stop,11,2)"/></xsl:when><xsl:otherwise>???</xsl:otherwise></xsl:choose>
+								<xsl:value-of select="number(substring(@start,9,2))"/>:<xsl:value-of select="substring(@start,11,2)"/> - <xsl:choose><xsl:when test="@stop"><xsl:value-of select="number(substring(@stop,9,2))"/>:<xsl:value-of select="substring(@stop,11,2)"/></xsl:when><xsl:otherwise>???</xsl:otherwise></xsl:choose>
 								&lt;/span&gt;
 							</xsl:if>
 							<xsl:if test="$PopupRating">
 								&lt;span class="popuprating"&gt;<xsl:value-of select="rating/value" />&lt;/span&gt;
 							</xsl:if>
 							<xsl:if test="($PopupTimes or ($PopupRating and rating)) and (($PopupSubtitle and sub-title) or ($PopupDescription and desc))">
+							<xsl:if test="$PopupCategories and category">
+								<xsl:if test="$PopupTimes or ($PopupRating and rating) or ($PopupSubtitle and sub-title) or ($PopupDescription and desc) or ($PopupDate and date)">&lt;b&gt; | &lt;/b&gt;</xsl:if>
+						<!--		&lt;ul class="popupcategorylist">-->
+								<xsl:for-each select="category">
+									<xsl:if test="($Grabber='tv_grab_de' and string(number(.))='NaN') or $Grabber!='tv_grab_de'">
+									<!--&lt;li><xsl:value-of select="." />&lt;/li>-->
+                  <xsl:value-of select="." /> |
+									</xsl:if>
+								</xsl:for-each>
+								<!--&lt;/ul>-->
+							</xsl:if>
 								&lt;hr class="popuphr1"/&gt;
 							</xsl:if>
 							<xsl:if test="$PopupSubtitle and sub-title">
@@ -414,16 +425,6 @@
 								&lt;span class="popupdate"&gt;
 										<xsl:value-of select="category" />
 								&lt;/span&gt;
-							</xsl:if>
-							<xsl:if test="$PopupCategories and category">
-								<xsl:if test="$PopupTimes or ($PopupRating and rating) or ($PopupSubtitle and sub-title) or ($PopupDescription and desc) or ($PopupDate and date)">&lt;hr class="popuphr3"/&gt;</xsl:if>
-								&lt;ul class="popupcategorylist">
-								<xsl:for-each select="category">
-									<xsl:if test="($Grabber='tv_grab_de' and string(number(.))='NaN') or $Grabber!='tv_grab_de'">
-									&lt;li><xsl:value-of select="." />&lt;/li>
-									</xsl:if>
-								</xsl:for-each>
-								&lt;/ul>
 							</xsl:if>
 							<xsl:if test="$PopupStarRating and star-rating">
 								<xsl:if test="$PopupTimes or ($PopupRating and rating) or ($PopupSubtitle and sub-title) or ($PopupDescription and desc) or ($PopupDate and date) or ($PopupCategories and category)">&lt;hr class="popuphr4"/&gt;</xsl:if>
@@ -512,7 +513,7 @@
 								<xsl:value-of select="icon/@src"/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:value-of select="concat('icons/',$iconname)"/>
+								<xsl:value-of select="concat('Senderlogos/',$iconname)"/>
 							</xsl:otherwise>
 						</xsl:choose>
 
@@ -531,7 +532,7 @@
 								<xsl:value-of select="icon/@src"/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:value-of select="concat('icons/',$iconname)"/>
+								<xsl:value-of select="concat('Senderlogos/',$iconname)"/>
 							</xsl:otherwise>
 						</xsl:choose>
 </xsl:attribute><xsl:attribute name="class">channelimage</xsl:attribute></img></xsl:if></td><td class="leftnumbercell"><xsl:value-of select="$channelnumber"/></td><td class="middlecell"><span class="leftnumber"><xsl:value-of select="$channelnumber"/></span><br class="leftchannelbr" /><span class="leftnbsp">&#160;</span><span class="channelname"><xsl:value-of select="$channelshortname"/></span><br class="rightchannelbr" /><span class="rightnbsp">&#160;</span><span class="rightnumber"><xsl:value-of select="$channelnumber"/></span></td><td class="rightnumbercell"><xsl:value-of select="$channelnumber"/></td><td class="rightlogocell"><xsl:if test="string-length($iconname) &gt; 0"><img><xsl:attribute name="src">						<xsl:choose>
@@ -539,7 +540,7 @@
 								<xsl:value-of select="icon/@src"/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:value-of select="concat('icons/',$iconname)"/>
+								<xsl:value-of select="concat('Senderlogos/',$iconname)"/>
 							</xsl:otherwise>
 						</xsl:choose>
 </xsl:attribute><xsl:attribute name="class">channelimage</xsl:attribute></img></xsl:if></td></tr></table>

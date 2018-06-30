@@ -47,7 +47,6 @@ table.internal{
 	text-align:left;
 	border:0px;
 	color:#EEE;
-	font-weight:bold;
 	background-color:transparent;
 }
 td.extendleft{
@@ -82,8 +81,8 @@ td.extendright{
 }
 td.program{
 	text-align:left;
-	font-family:arial, sans-serif;
-	font-size: 8pt;
+	font-family:verdana;
+	font-size: 10pt;
 	margin:0px;
 	padding:1px;
 	border:0px;
@@ -205,9 +204,21 @@ th.toprightcorner{
 /*End Sports*/
 
 /*Movies*/
-.MV,.film,.Film,.téléfilm,.CINE{
+.MV,.film,.Film,.téléfilm,.CINE,  .Krimi,.Thriller{
 	background-color:#903;
+	font-weight:bold;
 }
+.Doku,.Dokumentation, .Dokumentation > table.internal > tbody > tr > td.program{
+  background-color: #646633;
+}
+.News, .News  > table.internal > tbody > tr > td.program {
+  font-size: 9pt;
+}
+.Werbung, .Musik > table.internal > tbody > tr > td.program, .Werbung > table.internal > tbody > tr > td.program {
+  background-color: #333366;
+  color: #333366;
+}
+
 /*End Movies*/
 /*CHILDREN*/
 .Children,.INFANTILES,.emission_jeunesse{
@@ -218,11 +229,11 @@ th.toprightcorner{
 .popupheader{
 padding: 2px;
 border: 2px solid black;
-background-color: lightyellow;
-color:black;
-width: 150px;
-Font-Family:'arial';
-font-size:11pt;
+background-color: black;
+color:white;
+width: 650px;
+Font-Family:'Verdana';
+font-size:16pt;
 font-weight:bold;
 }
 
@@ -232,8 +243,10 @@ border: 2px solid black;
 border-top: 0px;
 background-color: lightyellow;
 color:black;
-width: 150px;
-Font-Family:'arial';
+width: 650px;
+text-justify: inter-word;
+Font-Family:'Verdana';
+text-align: justify;
 font-size:11pt;
 font-weight:normal;
 }
@@ -303,8 +316,8 @@ hr{
 	border:0px;
 }
 .leftchanneltable .leftlogocell img{
-	width:18px;
-	height:18px;
+	width:20px;
+	height:auto;
 }
 .leftchanneltable .leftnumbercell{
 	width:20px;

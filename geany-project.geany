@@ -20,6 +20,7 @@ indent_mode=0
 [project]
 name=TvXml
 base_path=.
+description=
 
 [long line marker]
 long_line_behaviour=1
@@ -27,3 +28,11 @@ long_line_column=72
 
 [files]
 current_page=0
+
+[prjorg]
+source_patterns=*.c;*.C;*.cpp;*.cxx;*.c++;*.cc;*.m;
+header_patterns=*.h;*.H;*.hpp;*.hxx;*.h++;*.hh;
+ignored_dirs_patterns=.*;CVS;
+ignored_file_patterns=*.o;*.obj;*.a;*.lib;*.so;*.dll;*.lo;*.la;*.class;*.jar;*.pyc;*.mo;*.gmo;
+generate_tag_prefs=0
+external_dirs=
