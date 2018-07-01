@@ -315,8 +315,26 @@ hr{
 	overflow: visible;
 	border:0px;
 }
+span.channelname {
+	/*color: #555555ff; font-size: 7pt;
+	top: 0px ;left: -45px; position:relative;
+	font-family: "Verdana";
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;*/
+	color:transparent;
+}
+img.channelimage {
+	height: 70px;
+	max-width: 90px;
+	min-height: 70px;
+	max-height: 80px;
+	object-fit: contain;
+	font-size: 14pt; color:black;
+}
+
 .leftchanneltable .leftlogocell img{
-	width:20px;
+	min-width:20px;
 	height:auto;
 }
 .leftchanneltable .leftnumbercell{

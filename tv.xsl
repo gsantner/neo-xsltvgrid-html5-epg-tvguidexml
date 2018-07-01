@@ -186,7 +186,7 @@
 					<xsl:text>]</xsl:text>
 				</xsl:attribute>
 			</xsl:if>
-		<table class="leftchanneltable"><tr><td class="leftlogocell"><xsl:if test="string-length($iconname) &gt; 0"><img><xsl:attribute name="src">
+		<table class="leftchanneltable"><tr><td class="leftlogocell"><xsl:if test="string-length($iconname) &gt; 0"><img><xsl:attribute name="alt"><xsl:value-of select="$channellongname" /></xsl:attribute><xsl:attribute name="src">
 						<xsl:choose>
 							<xsl:when test="$AbsoluteIcons">
 								<xsl:value-of select="icon/@src"/>

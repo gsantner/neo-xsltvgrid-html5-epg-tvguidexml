@@ -1,7 +1,8 @@
 *tv.xml
 tv1.xml
 guide.xml
-Senderlogos/
+Senderlogos
+guide-categories.txt
 
 # Temporary files
 *.tmp
