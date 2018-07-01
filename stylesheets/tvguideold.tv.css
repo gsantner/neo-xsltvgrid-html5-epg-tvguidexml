@@ -204,9 +204,12 @@ th.toprightcorner{
 /*End Sports*/
 
 /*Movies*/
-.MV,.film,.Film,.téléfilm,.CINE,  .Krimi,.Thriller{
+.MV,.film,.Film,.movie,.Moie,.FILM,.CINE,.Thriller:not(.Thriller), .Krimi:not(.Serie){
 	background-color:#903;
 	font-weight:bold;
+}
+.Anime {
+  background-color: #832850;
 }
 .Doku,.Dokumentation, .Dokumentation > table.internal > tbody > tr > td.program{
   background-color: #646633;
